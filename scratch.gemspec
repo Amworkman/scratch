@@ -1,4 +1,4 @@
-require_relative 'lib/scratch/version'
+require_relative 'lib/scratch/version.rb'
 
 Gem::Specification.new do |spec|
   spec.name          = "scratch"
