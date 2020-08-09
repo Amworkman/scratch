@@ -1,19 +1,21 @@
-<form action='/records' method='POST'>
 
-<label for="title">Title:</label><br>
-<input type=text id="title" name="title"><br><br>
+<div class="row">
+ 
 
-<label for="artist">Artist:</label><br>
-<input type=text id="artist" name="artist"><br><br>
+<div class="b-image">
+  <div class="col-12 col-s-9">
+    <div class="transbox">
+      <div class="content">
 
-<label for="label">Label:</label><br>
-<input type=text id="label" name="label"><br><br>
+      <form action='/records' method='POST'>
+       
+      <input type=text id="catalog_number" name="catalog_number" class="search" placeholder="Find an album..."><input type=submit name="submit" class="submit" value="Search"><br><br>
+      <p style="color:#7efdd0;font-weight:bold;font-family:Calibri">You can seach by almost anytihng, but for best results, searching by barcode or ctatlog number is recomended.</p>
+      
+      </form>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<label for="barcode">Barcode:</label><br>
-<input type=text id="barcode" name="barcode"><br><br>
-
-<label for="catalog_number">Catalog Number:</label><br>
-<input type=text id="catalog_number" name="catalog_number"><br><br>
-
-<input type=submit>
-</form>
