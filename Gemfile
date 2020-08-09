@@ -9,6 +9,8 @@ gem 'pry-nav'
 gem 'rake'
 gem 'require_all'
 gem 'dotenv'
+gem 'bcrypt'
+gem 'sinatra-contrib' 
 
 
 group :development do
