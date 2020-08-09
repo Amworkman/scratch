@@ -1,0 +1,22 @@
+
+  <div class=c-image>
+    <div class=transbox>
+      <div class=login-text> 
+        <p>Collection Value</p>
+        <div class=value-text>
+        $<%=@collection_value.round(2)%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="content">
+  <%current_user.records.each do |info|%>
+  <a href="/records/show/<%= info["id"] %>"><img src=<%= info["thumb"] %> alt="Album" width="200" height="200"></a>
+  <% end %>
+</div>
+
+
+  
+
+  
