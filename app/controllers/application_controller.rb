@@ -2,7 +2,7 @@ class ApplicationController < Sinatra::Base
 
   configure do
     enable :sessions
-    set :session_secret, "My session secret"
+    set :session_secret, ENV["ms"]
     set :public_folder, 'public'
     set :views, './app/views'
     helpers Sinatra::Cookies
