@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+
+  <title>$CRATCH</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #20221f;
+}
+
+.wrapper {
+  background: #ccd2ce;
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  box-shadow: 1px 1px 15px rgba(126,253,208,.3);
+  margin: 15px auto;
+  max-width: 120000px;
+  padding: 2.25%; /* 18px / 800px */
+  width: 85%;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+
+.search {
+  width: 75%;
+}
+
+.submit {
+  width: 70px;
+  background-color: #1c87c9;
+  color: #ffffff;
+}
+
+.header {
+  background-color: #7efdd0;
+  color: #222222;
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+  box-shadow: 1px 1px 15px rgba(126,253,208,.4);
+  margin: 16px auto;
+  max-width: 120000px;
+  padding: 1%; /* 18px / 800px */
+  width: 85%;
+}
+
+.transbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px; 
+  float: center; 
+  width: 100%;
+  background-color:rgba(32,34,31,0.6);
+}
+
+.headbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px; 
+  width: 113px;
+  margin: 1px;
+  background-color: rgba(32,34,31,0.03);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.l-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/login2.jpg"); 
+  background-color: #cccccc; 
+  height: 690px; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+.s-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/signup.jpg"); 
+  background-color: #cccccc; 
+  height: 690px; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+.c-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/collection.jpg"); 
+  background-position: bottom;
+  background-color: #cccccc; 
+  height: 500px; 
+  background-position: bottom; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+.b-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/welcome.jpg"); 
+  background-color: #cccccc; 
+  height: 690px; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  margin: 16px
+}
+
+.headbox:hover {
+  background-color: #acadad;
+}
+
+.button {
+  font: bold 14px "City Bold";
+  text-decoration: none;
+  background-color: #7efdd0;
+  color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px; 
+  width: 100px;
+  padding: 2px 6px 2px 6px;
+  border-top: 0px solid #CCCCCC;
+  border-right: 0px solid #333333;
+  border-bottom: 0px solid #333333;
+  border-left: 0px solid #CCCCCC;
+}
+
+.login-text{
+color: #7efdd0;
+font: bold 60px "City Bold";
+
+}
+
+.value-text{
+color: #fd927e;
+font: 55px "City Bold";
+text-align: center;
+
+}
+
+.item {
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 42px auto;
+}
+
+.right-content {
+  color: #7efdd0;
+  text-align: right;
+}
+
+.content {
+  text-align: center;
+}
+
+.aside {
+  background-color: #7efdd0;
+  padding: 15px;
+  color: #222222;
+  text-align: center;
+  font-size: 16px;
+  margin: 0px auto;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.mid {
+  background-color:rgba(32,34,31,0.8);
+  padding: 10px;
+  height: 700px; 
+  width: 500px;
+  color: #7efdd0;
+  text-align: center;
+  font-size: 18px;
+  margin: 16px auto;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.bside {
+  background-color: #7efdd0;
+  padding: 15px;
+  color: #222222;
+  text-align: left;
+  font-size: 12px;
+  margin: 16px auto;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.footer {
+  background-color: #7efdd0;
+  color: #222222;
+  text-align: center;
+  font-size: 12px;
+  margin: 15px auto;
+  padding: 15px;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class=row>
+      <div class="col-10 col-s-3">
+        <img src="/scratch.png">
+      </div>
+
+      <div class="col-1 col-s-3 menu">
+        <div class=headbox>
+
+          <a href="/records/new" class="button">Search</a>
+        </div>
+        <div class=headbox>
+          <a href="/collection" class="button">My Collection</a>
+        </div>
+        <div class=headbox>
+          <%if signed_in?%>
+            <form action='/sessions' method=post>
+              <input type=hidden name=_method value=delete>
+              <input type=submit class=button value="Logout">
+            </form>
+          <%else%>
+            <a href=/sessions/new class="button">Log in</a>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper">
+    <%if @error%>
+      <p style="color:#ee6161"><%=@error%></p>
+    <%end%>
+
+    <%= yield %>
+
+    <div class="footer">
+      <small>&copy; 2020 <strong>$cratch</strong></small>
+    </div>
+  </div>
+
+  </body>
+</html>
