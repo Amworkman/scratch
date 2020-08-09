@@ -1,8 +1,8 @@
 require './config/environment'
 
   use Rack::MethodOverride
+  use SessionController
+  use UsersController
   use RecordContoller
-  use ArtistController
-  use LabelController
   run ApplicationController
 
