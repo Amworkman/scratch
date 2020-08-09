@@ -9,40 +9,66 @@ class RecordContoller < ApplicationController
     erb :'records/new'
   end
 
+  get '/records/show/:id' do
+    
+    create_record
+
+    erb :'records/show'
+  end
+
   get '/records/:id' do
     @record = Record.find_by_id(params[:id])
+
     erb :'records/show'
   end
 
   get '/records/:id/edit' do
-    @record = Record.find_by_id(params[:id])
+    @record = Record.find(params[:id])
+
     redirect "/records/#{record.id}"
+  end
+
+  get '/collection' do
+    if signed_in?
+      @collection = current_user.records.map {|record| record["lowest_price"].to_f} 
+      @collection_value = @collection.inject(0, :+){|sum, x| sum + x }  
+      erb :'records/collection'
+    else
+      redirect to :'sessions/new'
+    end
+  end
+
+  post '/collection' do 
+    if signed_in?      
+     
+      @user = User.find(session[:user_id])
+      @record = Record.find(params[:record_id])
+      @user.records << @record
+      @collection = current_user.records.map {|record| record["lowest_price"].to_f} 
+      @collection_value = @collection.inject(0, :+){|sum, x| sum + x }
+      erb :'records/collection'
+    else
+      @error = "Please log in to add to your collection"
+      redirect to '/sessions/new'
+    end
+  end
+
+  post '/record' do
+    update_record
+    redirect to :"records/show/#{params['record_id']}"
   end
 
   post '/records' do
+      discogs = DiscogsAPI.new
+      @search_terms = params[:catalog_number]
+      @catno_search = discogs.search_from_catalog_number(params[:catalog_number])
 
-    #if lable does not exist
-      #@label = Label.new(params[:label])
-    #end
-
-
-    #if artist does not exist
-      #@artist = Artist.new(params[:artist])
-    #endS
-
-    # @record = Record.new(
-    #   title: params[:title],
-    #   barcode: params[:barcode],
-    #   catalog_number: params[:catalog_number]
-    #   artist_id: @artist.id
-    #   label_id: @label.id
-    # )
-
-    # @user_records = user_records.new(
-      # record_id: @record.id
-      # user_id: user.id
-    #)
-    redirect "/records/#{record.id}"
+      erb :'records/find'    
   end
 
+  delete '/record' do
+    record = UserRecord.find_by(record_id: params["record_id"], user_id: params["user_id"])
+    record.destroy
+    redirect to :'/collection'
+  end
 end
