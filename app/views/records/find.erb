@@ -1,0 +1,9 @@
+<div class="content">
+  <% if @search_terms != nil%>
+    <% @vinyl_only = @catno_search.select {|record| Array(record["format"]).include?("Vinyl") if record["master_id"] != record["id"] && record["master_id"] != "null" && record["mater_id"] != 0}%>
+    <% @record_info = @vinyl_only.map {|record|  {"thumb" => record["thumb"], "id" => record["id"]}}%>
+    <% @record_info.each do |info|%>
+    <a href="/records/show/<%= info["id"] %>"><img src=<%= info["thumb"] %>></a>
+    <% end %>
+  <% end %>
+</div>
