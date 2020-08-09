@@ -1,4 +1,5 @@
 class Artist < ActiveRecord::Base
-  has_many :records
-  has_many :lables, through: :records
+  has_many :artist_records
+  has_many :records, through: :artist_records
+
 end
