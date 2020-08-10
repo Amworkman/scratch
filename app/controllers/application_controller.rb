@@ -21,6 +21,6 @@ class ApplicationController < Sinatra::Base
   end
     
   get '/' do
-    erb :'records/index'
+    erb :'records/new'
   end
 end
