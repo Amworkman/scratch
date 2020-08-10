@@ -2,10 +2,10 @@ class ApplicationController < Sinatra::Base
 
   configure do
     enable :sessions
-    set :session_secret, ENV["ms"]
+    set :session_secret, set :session_secret, ENV.fetch('ms') { SecureRandom.hex(64) }
     set :public_folder, 'public'
     set :views, './app/views'
-    helpers Sinatra::Cookies
+    
   end
 
   
