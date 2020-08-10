@@ -4,7 +4,7 @@ require 'bundler/setup'
 require 'dotenv/load'
 Bundler.require(:default, ENV['SINATRA_ENV'])
 require 'sinatra'
-require 'sinatra/cookies'
+
 
 
 ActiveRecord::Base.establish_connection(
