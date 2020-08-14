@@ -15,18 +15,22 @@
 
 <div class="container">
 <div class="row">
-  <div class="col-2 col-s-3 menu">
-        
-    <div class="bside">
+<div class="col-3 col-s-12">
+    <div class="aside">      
+     	 	<h1>Lowest Price on Discogs:</h1>
+              <h2 style="color:#fd927e">$<%=@new_record.lowest_price%> USD</h2><br>
 
-    	  <h1>Tracks:</h1><br>   
-          <%@new_record.tracks.each do |track|%>
-          <h3><%=track["title"]%></h3>
-          <p><%=track["duration"]%></p><br>
-        <%end%><br> 
-    </div>  
+            <h2>For Sale on Discogs:</h2>
+              <h3><%=@new_record.num_for_sale%></h3><br>
+
+            <h2>Identifiers:</h2>
+              <%@new_record.identifiers.each do |identifier|%>
+                <h3><%=identifier["type_of_info"]%></h3>
+                <p><%=identifier["value"]%></p>
+                <p><%=identifier["description"]%></p><br>
+              <%end%><br><br>      
+    </div>
   </div>
-
   <div class="col-7 col-s-9">
     <div class="content">
       <div class=cover-image>
@@ -90,33 +94,25 @@
         </div>
         </div>
         </div>
+        <div class=image>
               
             <%@new_record.videos.each do |video|%>
           		<% vid_id = video.uri.split("=")%>
           		<%emb_link = "https://www.youtube.com/embed/"+vid_id[1]%>
-            		<iframe width="425" height="215" src=<%=emb_link%> frameborder="0" allowfullscreen></iframe>
+            		<iframe width="47%" height="47%" src=<%=emb_link%> frameborder="0" allowfullscreen></iframe>
           		</iframe>
         		<%end%>
+            </div>
     </div>    
   </div>
-
-  <div class="col-3 col-s-12">
-    <div class="aside">
-      
-     	 	<h1>Lowest Price on Discogs:</h1>
-              <h2 style="color:#fd927e">$<%=@new_record.lowest_price%> USD</h2><br>
-
-            <h2>For Sale on Discogs:</h2>
-              <h3><%=@new_record.num_for_sale%></h3><br>
-
-            <h2>Identifiers:</h2>
-              <%@new_record.identifiers.each do |identifier|%>
-                <h3><%=identifier["type_of_info"]%></h3>
-                <p><%=identifier["value"]%></p>
-                <p><%=identifier["description"]%></p><br>
-              <%end%><br><br>
-      
+    <div class="col-2 col-s-3 menu">        
+      <div class="bside">
+    	  <h1>Tracks:</h1><br>   
+          <%@new_record.tracks.each do |track|%>
+          <h3><%=track["title"]%></h3>
+          <p><%=track["duration"]%></p><br>
+        <%end%><br> 
+      </div>  
     </div>
   </div>
-</div>
 </div>
