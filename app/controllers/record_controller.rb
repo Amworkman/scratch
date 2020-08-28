@@ -11,8 +11,8 @@ class RecordContoller < ApplicationController
 
   get '/records/show/:id' do
     
+    @user_record = UserRecord.where(user_id: current_user.id, record_id: params["id"]).first
     create_record
-
     erb :'records/show'
   end
 
@@ -66,6 +66,15 @@ class RecordContoller < ApplicationController
       erb :'records/find'    
   end
 
+  patch '/record' do
+
+    user_record = UserRecord.where(user_id: current_user.id, record_id: params["record_id"]).first
+    user_record.purchase_price = params['purchase_price']
+    user_record.save
+    redirect to :"records/show/#{params['record_id']}"
+    
+  end
+  
   delete '/record' do
     record = UserRecord.find_by(record_id: params["record_id"], user_id: params["user_id"])
     record.destroy
