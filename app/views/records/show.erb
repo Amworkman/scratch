@@ -23,6 +23,20 @@
             <h2>For Sale on Discogs:</h2>
               <h3><%=@new_record.num_for_sale%></h3><br>
 
+            
+             <%if signed_in? && current_user.records.include?(@new_record) && @user_record.purchase_price == nil%>
+              <form action="/record" method="post">
+              <input type=hidden name="_method" value=patch>
+              <input type=hidden name="record_id" value=<%=@new_record.id%>>
+              <input id=purchase_price name=purchase_price>
+              <input type=submit value="Add Purchase Price">
+              </form>
+              <%elsif signed_in? && current_user.records.include?(@new_record) && @user_record.purchase_price != nil%>
+              <h2>Purchased For:</h2>
+              <h3><%=@user_record.purchase_price%></h3>
+             <%end%><br>
+            
+
             <h2>Identifiers:</h2>
               <%@new_record.identifiers.each do |identifier|%>
                 <h3><%=identifier["type_of_info"]%></h3>
