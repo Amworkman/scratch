@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_02_171833) do
+ActiveRecord::Schema.define(version: 2020_08_28_181819) do
 
   create_table "artist_records", force: :cascade do |t|
     t.integer "artist_id"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_08_02_171833) do
   create_table "user_records", force: :cascade do |t|
     t.integer "record_id"
     t.integer "user_id"
+    t.string "purchase_price"
     t.index ["record_id"], name: "index_user_records_on_record_id"
     t.index ["user_id"], name: "index_user_records_on_user_id"
   end
